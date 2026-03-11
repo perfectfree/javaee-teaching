@@ -1,0 +1,6 @@
+server:
+  port: 8090
+
+spring:
+  thymeleaf:
+    cache: false          # 开发时关闭缓存，便于实时查看修改

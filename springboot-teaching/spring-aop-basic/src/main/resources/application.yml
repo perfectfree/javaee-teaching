@@ -1,0 +1,7 @@
+server:
+  port: 8085
+
+# 可显式配置代理模式，默认会根据目标类是否有接口自动选择
+spring:
+  aop:
+    proxy-target-class: true   # true 强制使用CGLIB，false 使用JDK动态代理（有接口时）

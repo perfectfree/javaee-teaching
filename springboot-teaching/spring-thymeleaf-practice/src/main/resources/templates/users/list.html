@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::section})}">
+<head>
+    <title>用户列表</title>
+</head>
+<body>
+<section>
+    <h2>用户列表</h2>
+    <a th:href="@{/users/new}" class="btn">新增用户</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>邮箱</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}">1</td>
+            <td th:text="${user.name}">张三</td>
+            <td th:text="${user.email}">zhangsan@example.com</td>
+            <td>
+                <span th:if="${user.status == 1}" style="color:green;">启用</span>
+                <span th:unless="${user.status == 1}" style="color:red;">禁用</span>
+            </td>
+            <td>
+                <a th:href="@{/users/{id}/edit(id=${user.id})}" class="btn btn-sm btn-warning">编辑</a>
+                <form th:action="@{/users/{id}/delete(id=${user.id})}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('确认删除？')">删除</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

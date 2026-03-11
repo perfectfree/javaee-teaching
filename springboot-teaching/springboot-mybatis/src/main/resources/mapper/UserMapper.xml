@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.jiangbaiyu.demo.springboot.mybatis.mapper.UserMapper">
+
+    <!-- 动态SQL：多条件查询 -->
+    <select id="searchUsers" resultType="User">
+        SELECT id, name, email, dept_id AS deptId, status FROM user
+        <where>
+            <if test="name != null and name != ''">
+                AND name LIKE CONCAT('%', #{name}, '%')
+            </if>
+            <if test="email != null and email != ''">
+                AND email = #{email}
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+            <if test="deptId != null">
+                AND dept_id = #{deptId}
+            </if>
+        </where>
+    </select>
+
+    <!-- 关联查询：resultMap -->
+    <resultMap id="UserWithDeptMap" type="User">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="email" column="email"/>
+        <result property="deptId" column="dept_id"/>
+        <result property="status" column="status"/>
+        <association property="dept" javaType="edu.jiangbaiyu.demo.springboot.mybatis.entity.Dept">
+            <id property="id" column="dept_id"/>
+            <result property="name" column="dept_name"/>
+        </association>
+    </resultMap>
+
+    <select id="selectUsersWithDept" resultMap="UserWithDeptMap">
+        SELECT u.id, u.name, u.email, u.dept_id, u.status,
+        d.id AS dept_id, d.name AS dept_name
+        FROM user u LEFT JOIN dept d ON u.dept_id = d.id
+    </select>
+
+</mapper>

@@ -1,0 +1,20 @@
+# 多环境配置示例
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+server:
+  port: 8080
+# 开启自动配置报告（通过端点或debug=true）
+debug: true
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+server:
+  port: 8081

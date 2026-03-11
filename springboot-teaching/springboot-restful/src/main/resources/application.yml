@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: springboot-restful
+server:
+  port: 8080
+springdoc:
+  api-docs:
+    path: /v1/api-docs
+  swagger-ui:
+    path: /swagger-ui.html

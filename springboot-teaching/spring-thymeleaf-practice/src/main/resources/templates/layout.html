@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:fragment="layout(content)">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">布局页面</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments/common :: header}"></div>
+
+<div class="container">
+    <!-- 显示消息 -->
+    <div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
+
+    <!-- 内容区域，由子页面提供 -->
+    <div th:replace="${content}"></div>
+</div>
+
+<div th:replace="~{fragments/common :: footer}"></div>
+</body>
+</html>

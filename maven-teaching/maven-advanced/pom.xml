@@ -1,0 +1,109 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>edu.jiangbaiyu</groupId>
+        <artifactId>maven-teaching</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>maven-advanced</artifactId>
+    <packaging>jar</packaging>
+
+    <name>maven-advanced</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- ========== 演示依赖范围 ========== -->
+        <!-- compile 范围（默认） -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <!-- provided 范围：编译时需要，运行时由容器提供 -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- runtime 范围：编译不需要，运行时需要 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- test 范围：仅在测试时可见 -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- system 范围（一般不推荐，此处仅演示）需配合 systemPath，指向本地 jar。这里不实际使用，仅注释说明 -->
+        <!--
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>custom-lib</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/custom-lib.jar</systemPath>
+        </dependency>
+        -->
+
+        <!-- ========== 演示依赖传递 ========== -->
+        <!-- httpclient 会传递依赖 commons-logging 和 httpcore 等 -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+
+        <!-- ========== 演示依赖冲突与排除 ========== -->
+        <!-- 1. 直接声明 commons-codec 版本 1.15 -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.15</version> <!-- 明确版本，覆盖父管理中的 1.15 实际上相同，但为了演示冲突，可改成 1.11 -->
+        </dependency>
+
+        <!-- 2. httpclient 传递依赖 commons-codec 1.11（通过 exclusions 排除其中一个） -->
+        <!-- 注意：这里我们演示排除传递依赖，让最终使用的版本为直接声明的 1.15 -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.13</version>
+<!--            <exclusions>-->
+<!--                &lt;!&ndash; 排除 httpclient 对 commons-codec 的传递依赖，避免与直接声明的 1.15 冲突（虽然 Maven 会选择路径更短的直接依赖，但排除可以彻底移除传递依赖） &ndash;&gt;-->
+<!--                <exclusion>-->
+<!--                    <groupId>commons-codec</groupId>-->
+<!--                    <artifactId>commons-codec</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+        </dependency>
+
+        <!-- 为了更明显展示冲突，我们可以再加入一个依赖，它传递依赖低版本的 commons-codec，但不排除 -->
+        <!-- 但上面的配置已经足够：直接声明 1.15，httpclient 原本传递 1.11，但由于排除了，所以最终只有 1.15。 -->
+        <!-- 如果不排除，Maven 会采用路径最短原则，直接依赖 1.15 路径长度为 1，传递依赖 1.11 路径长度为 2，所以实际也会用 1.15，但排除可以用于强制移除某些传递依赖。 -->
+
+        <!-- 再增加一个依赖，用于演示冲突调解：声明一个旧版本的 commons-codec 并保留 httpclient 的传递依赖，观察 Maven 如何选择。此处为了简化，我们单独在测试中通过 dependency:tree 观察。 -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>19</source>
+                    <target>19</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

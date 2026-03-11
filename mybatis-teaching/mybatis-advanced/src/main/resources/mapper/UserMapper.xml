@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.jiangbaiyu.demo.mybatis.advanced.mapper.UserMapper">
+
+    <!-- 基础 CRUD -->
+    <select id="selectUserById" resultType="edu.jiangbaiyu.demo.mybatis.advanced.pojo.User">
+        SELECT id, name, email, dept_id AS deptId, status
+        FROM user
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectAllUsers" resultType="edu.jiangbaiyu.demo.mybatis.advanced.pojo.User">
+        SELECT id, name, email, dept_id AS deptId, status
+        FROM user
+    </select>
+
+    <insert id="insertUser" parameterType="edu.jiangbaiyu.demo.mybatis.advanced.pojo.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user (name, email, dept_id, status)
+        VALUES (#{name}, #{email}, #{deptId}, #{status})
+    </insert>
+
+    <update id="updateUser" parameterType="edu.jiangbaiyu.demo.mybatis.advanced.pojo.User">
+        UPDATE user
+        SET name = #{name}, email = #{email}, dept_id = #{deptId}, status = #{status}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+
+    <!-- 动态SQL：多条件查询 -->
+    <select id="searchUsers" resultType="edu.jiangbaiyu.demo.mybatis.advanced.pojo.User">
+        SELECT id, name, email, dept_id AS deptId, status FROM user
+        <where>
+            <if test="name != null and name != ''">
+                AND name LIKE CONCAT('%', #{name}, '%')
+            </if>
+            <if test="email != null and email != ''">
+                AND email = #{email}
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+            <if test="deptId != null">
+                AND dept_id = #{deptId}
+            </if>
+        </where>
+    </select>
+
+    <!-- 批量删除 -->
+    <delete id="deleteUsersByIds">
+        DELETE FROM user WHERE id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!-- 关联查询：一对一（resultMap） -->
+    <resultMap id="UserWithDeptMap" type="edu.jiangbaiyu.demo.mybatis.advanced.pojo.User">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="email" column="email"/>
+        <result property="deptId" column="dept_id"/>
+        <result property="status" column="status"/>
+        <association property="dept" javaType="edu.jiangbaiyu.demo.mybatis.advanced.pojo.Dept">
+            <id property="id" column="dept_id"/>
+            <result property="name" column="dept_name"/>
+        </association>
+    </resultMap>
+
+    <select id="selectUsersWithDept" resultMap="UserWithDeptMap">
+        SELECT u.id, u.name, u.email, u.dept_id, u.status,
+        d.id AS dept_id, d.name AS dept_name
+        FROM user u LEFT JOIN dept d ON u.dept_id = d.id
+    </select>
+
+</mapper>

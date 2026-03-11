@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">用户列表</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .enabled { color: green; }
+        .disabled { color: red; }
+    </style>
+</head>
+<body>
+<h1 th:text="${title}">用户列表</h1>
+
+<!-- 判断用户列表是否为空 -->
+<div th:if="${users.empty}">
+    <p>暂无用户数据</p>
+</div>
+
+<table th:unless="${users.empty}">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>邮箱</th>
+        <th>状态</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}">1</td>
+        <td th:text="${user.name}">张三</td>
+        <td th:text="${user.email}">email</td>
+        <td>
+            <span th:if="${user.status == 1}" class="enabled">启用</span>
+            <span th:unless="${user.status == 1}" class="disabled">禁用</span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

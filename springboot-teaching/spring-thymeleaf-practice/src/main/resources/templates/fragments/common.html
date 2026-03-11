@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">默认标题</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<!-- 头部片段 -->
+<div th:fragment="header">
+    <header style="background-color: #343a40; color: white; padding: 10px;">
+        <h1>用户管理系统</h1>
+        <nav>
+            <a th:href="@{/users}" style="color: white; margin-right: 10px;">用户列表</a>
+            <a th:href="@{/users/new}" style="color: white;">新增用户</a>
+        </nav>
+    </header>
+</div>
+
+<!-- 底部片段 -->
+<div th:fragment="footer">
+    <footer style="margin-top: 20px; text-align: center; color: #6c757d;">
+        &copy; 2026 用户管理系统
+    </footer>
+</div>
+</body>
+</html>
