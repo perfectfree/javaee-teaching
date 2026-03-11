@@ -24,7 +24,7 @@ public class PracticeController {
      * 设置当前用户角色（通过请求参数模拟登录）
      */
     @GetMapping("/setRole")
-    public String setRole(@RequestParam String role) {
+    public String setRole(@RequestParam(value = "role") String role) {
         UserContext.setCurrentRole(role);
         return "当前用户角色已设置为: " + role;
     }
@@ -42,7 +42,7 @@ public class PracticeController {
      * 测试无权限要求的方法
      */
     @GetMapping("/user/find")
-    public String findUser(@RequestParam Integer id) {
+    public String findUser(@RequestParam(value = "id") Integer id) {
         return userService.findUserById(id);
     }
 
@@ -50,7 +50,7 @@ public class PracticeController {
      * 测试需要 ADMIN 权限的方法
      */
     @PostMapping("/user/create")
-    public String createUser(@RequestParam String name) {
+    public String createUser(@RequestParam(value = "name") String name) {
         return userService.createUser(name);
     }
 
@@ -58,7 +58,7 @@ public class PracticeController {
      * 测试需要 ADMIN/MANAGER 权限的方法
      */
     @DeleteMapping("/user/delete")
-    public String deleteUser(@RequestParam Integer id) {
+    public String deleteUser(@RequestParam(value = "id") Integer id) {
         return userService.deleteUser(id);
     }
 
@@ -66,7 +66,7 @@ public class PracticeController {
      * 测试订单查询（无权限要求）
      */
     @GetMapping("/order/find")
-    public String findOrder(@RequestParam Integer id) {
+    public String findOrder(@RequestParam(value = "id") Integer id) {
         return orderService.findOrderById(id);
     }
 
@@ -74,7 +74,7 @@ public class PracticeController {
      * 测试创建订单（需要 ADMIN）
      */
     @PostMapping("/order/create")
-    public String createOrder(@RequestParam String orderNo) {
+    public String createOrder(@RequestParam(value = "orderNo") String orderNo) {
         return orderService.createOrder(orderNo);
     }
 
@@ -82,7 +82,7 @@ public class PracticeController {
      * 测试内部调用失效问题（直接调用本类方法，AOP不生效）
      */
     @GetMapping("/user/internalCall")
-    public String internalCall(@RequestParam String name) {
+    public String internalCall(@RequestParam(value = "name") String name) {
         // 这里直接调用 UserService 的 internalCallDemo，其内部调用 createUser 不会触发AOP
         return userService.internalCallDemo(name);
     }
@@ -93,7 +93,7 @@ public class PracticeController {
      * 为简化，此处不实现，只做提示。
      */
     @GetMapping("/user/internalCallFixed")
-    public String internalCallFixed(@RequestParam String name) {
+    public String internalCallFixed(@RequestParam(value = "name") String name) {
         // 直接调用 createUser，会触发AOP，因为是通过代理对象调用的
         return userService.createUser(name) + " (通过控制器直接调用代理)";
     }

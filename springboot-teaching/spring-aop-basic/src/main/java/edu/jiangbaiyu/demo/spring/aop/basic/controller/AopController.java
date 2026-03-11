@@ -24,12 +24,12 @@ public class AopController {
      * 测试正常执行
      */
     @GetMapping("/aop/user/find")
-    public String testUserFind(@RequestParam(defaultValue = "1") Integer id) {
+    public String testUserFind(@RequestParam(value = "id", defaultValue = "1") Integer id) {
         return userService.findUserById(id);
     }
 
     @GetMapping("/aop/user/save")
-    public String testUserSave(@RequestParam(defaultValue = "Tom") String name) {
+    public String testUserSave(@RequestParam(value = "name", defaultValue = "Tom") String name) {
         userService.saveUser(name);
         return "save success";
     }
@@ -38,7 +38,7 @@ public class AopController {
      * 测试异常
      */
     @GetMapping("/aop/user/error")
-    public String testUserError(@RequestParam(defaultValue = "0") Integer id) {
+    public String testUserError(@RequestParam(value = "id", defaultValue = "0") Integer id) {
         try {
             return userService.findUserById(id);
         } catch (IllegalArgumentException e) {
@@ -50,12 +50,12 @@ public class AopController {
      * 测试 ProductService（无接口，CGLIB）
      */
     @GetMapping("/aop/product/find")
-    public String testProductFind(@RequestParam(defaultValue = "10") Integer id) {
+    public String testProductFind(@RequestParam(value = "id", defaultValue = "10") Integer id) {
         return productService.findProductById(id);
     }
 
     @GetMapping("/aop/product/delete")
-    public String testProductDelete(@RequestParam(defaultValue = "5") Integer id) {
+    public String testProductDelete(@RequestParam(value = "id", defaultValue = "5") Integer id) {
         productService.deleteProduct(id);
         return "delete success";
     }

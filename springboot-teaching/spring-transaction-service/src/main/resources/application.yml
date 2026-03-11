@@ -4,7 +4,10 @@ spring:
     username: test
     password: 123456  # 请根据实际修改
     driver-class-name: com.mysql.cj.jdbc.Driver
-
+  sql:
+    init:
+      mode: always   # 每次启动执行 schema.sql
+      schema-locations: classpath:schema.sql
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 打印SQL
