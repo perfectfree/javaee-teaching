@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    private final Map<Long, User> userMap = new ConcurrentHashMap<>();
+    private final Map<Long, User> userMap = new ConcurrentHashMap<>(); //模拟数据存储
     private final AtomicLong idGenerator = new AtomicLong(1);
 
     @Operation(summary = "创建用户", description = "传入User JSON，返回创建的用户")
@@ -30,7 +30,7 @@ public class UserController {
 
     @Operation(summary = "根据ID查询用户")
     @GetMapping("/{id}")
-    public Result<User> getUserById(@Parameter(description = "用户ID") @PathVariable Long id) {
+    public Result<User> getUserById(@Parameter(description = "用户ID") @PathVariable("id") Long id) {
         User user = userMap.get(id);
         if (user == null) {
             throw new BusinessException(404, "用户不存在");
@@ -46,7 +46,7 @@ public class UserController {
 
     @Operation(summary = "更新用户")
     @PutMapping("/{id}")
-    public Result<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+    public Result<User> updateUser(@PathVariable("id") Long id, @RequestBody User user) {
         if (!userMap.containsKey(id)) {
             throw new BusinessException(404, "用户不存在");
         }
@@ -57,7 +57,7 @@ public class UserController {
 
     @Operation(summary = "删除用户")
     @DeleteMapping("/{id}")
-    public Result<String> deleteUser(@PathVariable Long id) {
+    public Result<String> deleteUser(@PathVariable("id") Long id) {
         userMap.remove(id);
         return Result.success("删除成功");
     }

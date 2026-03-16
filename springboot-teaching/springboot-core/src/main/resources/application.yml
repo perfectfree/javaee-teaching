@@ -2,6 +2,7 @@
 spring:
   profiles:
     active: dev
+
 ---
 spring:
   config:
@@ -11,6 +12,17 @@ server:
   port: 8080
 # 开启自动配置报告（通过端点或debug=true）
 debug: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: conditions   # 暴露 conditions 端点
+        # 如果想暴露多个，用逗号分隔：include: health,info,conditions
+        # 暴露所有端点（生产环境慎用）：include: "*"
+        #pom.xml 中已有 spring-boot-starter-actuator，无需重复添加。
+        #访问地址：http://localhost:8080/actuator/conditions
+
 ---
 spring:
   config:
