@@ -1,8 +1,12 @@
 server:
   port: 8088
 
-spring:
-  security:
-    user:
-      name: user       # 如果没自定义UserDetailsService，默认用户配置
-      password: 123456
+#spring:
+#  security:
+#    user:
+#      name: user       # 如果没自定义UserDetailsService，默认用户配置
+#      password: 123456
+
+logging:
+  level:
+    org.springframework.security: DEBUG

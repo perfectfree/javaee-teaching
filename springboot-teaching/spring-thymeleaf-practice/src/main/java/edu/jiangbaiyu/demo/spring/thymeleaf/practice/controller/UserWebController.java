@@ -51,7 +51,7 @@ public class UserWebController {
      * 跳转到编辑表单
      */
     @GetMapping("/{id}/edit")
-    public String editForm(@PathVariable Integer id, Model model) {
+    public String editForm(@PathVariable("id") Integer id, Model model) {
         User user = userService.findById(id);
         model.addAttribute("user", user);
         return "users/form";
@@ -60,8 +60,8 @@ public class UserWebController {
     /**
      * 更新用户（使用POST + _method=PUT 模拟PUT）
      */
-    @PostMapping("/{id}")
-    public String update(@PathVariable Integer id, @ModelAttribute User user, RedirectAttributes redirectAttributes) {
+    @PutMapping("/{id}")
+    public String update(@PathVariable("id") Integer id, @ModelAttribute User user, RedirectAttributes redirectAttributes) {
         user.setId(id);
         userService.update(user);
         redirectAttributes.addFlashAttribute("message", "用户更新成功");
@@ -72,7 +72,7 @@ public class UserWebController {
      * 删除用户
      */
     @PostMapping("/{id}/delete")
-    public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
+    public String delete(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
         userService.deleteById(id);
         redirectAttributes.addFlashAttribute("message", "用户删除成功");
         return "redirect:/users";

@@ -1,6 +1,6 @@
 #### **运行说明**
 
-1. 运行 `SpringAopBasicApplication` 启动应用。
+1. 运行 `App` 启动应用。
 2. 在浏览器或 Postman 中访问以下 URL，观察控制台输出的切面日志：
    - 正常执行（触发 @Before, @After, @AfterReturning, @Around）：
      - `http://localhost:8085/aop/user/find?id=1`

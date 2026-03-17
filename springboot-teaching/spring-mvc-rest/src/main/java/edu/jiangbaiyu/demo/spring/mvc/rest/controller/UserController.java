@@ -34,7 +34,7 @@ public class UserController {
      * GET /users/{id}
      */
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Integer id) {
+    public ResponseEntity<User> getUserById(@PathVariable("id") Integer id) {
         User user = userService.findById(id);
         if (user == null) {
             return ResponseEntity.notFound().build();
@@ -59,7 +59,7 @@ public class UserController {
      * PUT /users/{id}
      */
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Integer id, @RequestBody User user) {
+    public ResponseEntity<User> updateUser(@PathVariable("id") Integer id, @RequestBody User user) {
         User updated = userService.update(id, user);
         if (updated == null) {
             return ResponseEntity.notFound().build();
@@ -72,7 +72,7 @@ public class UserController {
      * DELETE /users/{id}
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
+    public ResponseEntity<Void> deleteUser(@PathVariable("id") Integer id) {
         User existing = userService.findById(id);
         if (existing == null) {
             return ResponseEntity.notFound().build();
@@ -86,7 +86,7 @@ public class UserController {
      * GET /users/filter?status=1
      */
     @GetMapping("/filter")
-    public List<User> getUsersByStatus(@RequestParam(required = false) Integer status) {
+    public List<User> getUsersByStatus(@RequestParam(required = false,value = "status") Integer status) {
         if (status == null) {
             return userService.findAll();
         }

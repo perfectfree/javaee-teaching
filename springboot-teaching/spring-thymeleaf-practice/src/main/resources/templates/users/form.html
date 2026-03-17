@@ -8,10 +8,10 @@
 <section>
     <h2 th:text="${user.id == null ? '新增用户' : '编辑用户'}">表单标题</h2>
 
-    <form th:action="${user.id == null} ? @{/users} : @{/users/{id}(id=${user.id})}"
+    <form th:action="${user.id == null} ? @{/users}: @{/users/{id}(id=${user.id})}"
           th:object="${user}" method="post">
         <!-- 如果是编辑，添加隐藏字段 _method=PUT 模拟PUT -->
-        <input type="hidden" name="_method" th:value="${user.id == null} ? 'POST' : 'PUT'" />
+        <input type="hidden" name="_method" value="PUT" th:if="${user.id != null}"/>
 
         <div style="margin-bottom: 10px;">
             <label>姓名:</label>

@@ -19,6 +19,19 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
+<!--这里可以演示依赖传递导致的冲突，它传递依赖的 mybatis-spring:2.1.2 是为 Spring Framework 5 设计的，不支持 Spring 6（Spring Boot 3+ 的基础）-->
+<!--            MyBatis-Plus 3.5.10 本身尚未默认使用 mybatis-spring:3.0+，需要手动覆盖版本：<mybatis-spring.version>3.0.3</mybatis-spring.version>。-->
+        </dependency>
+        <!-- 强制使用兼容 Spring Boot 3 的 mybatis-spring -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+        </dependency>
+        <!-- 显式升级 MyBatis 核心库 -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.16</version> <!-- 或 3.5.14、3.5.15 -->
         </dependency>
         <dependency>
             <groupId>mysql</groupId>

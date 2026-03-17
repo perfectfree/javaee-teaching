@@ -3,6 +3,7 @@ package edu.jiangbaiyu.demo.spring.aop.practice.controller;
 import edu.jiangbaiyu.demo.spring.aop.practice.service.OrderService;
 import edu.jiangbaiyu.demo.spring.aop.practice.service.UserService;
 import edu.jiangbaiyu.demo.spring.aop.practice.util.UserContext;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +25,8 @@ public class PracticeController {
      * 设置当前用户角色（通过请求参数模拟登录）
      */
     @GetMapping("/setRole")
-    public String setRole(@RequestParam(value = "role") String role) {
+    public String setRole(@RequestParam(value = "role") String role, HttpServletRequest request) {
+        request.getSession().setAttribute("currentRole", role);
         UserContext.setCurrentRole(role);
         return "当前用户角色已设置为: " + role;
     }
@@ -33,8 +35,8 @@ public class PracticeController {
      * 清除角色（登出）
      */
     @GetMapping("/clearRole")
-    public String clearRole() {
-        UserContext.clear();
+    public String clearRole(HttpServletRequest request) {
+        request.getSession().removeAttribute("currentRole");
         return "用户角色已清除，默认为 GUEST";
     }
 

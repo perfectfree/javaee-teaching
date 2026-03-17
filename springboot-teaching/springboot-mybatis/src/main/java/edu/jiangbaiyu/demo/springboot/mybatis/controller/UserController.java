@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Integer id) {
+    public ResponseEntity<User> getUserById(@PathVariable("id") Integer id) {
         User user = userService.findById(id);
         if (user == null) {
             return ResponseEntity.notFound().build();
@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Integer id, @RequestBody User user) {
+    public ResponseEntity<User> updateUser(@PathVariable("id") Integer id, @RequestBody User user) {
         user.setId(id);
         User updated = userService.update(user);
         if (updated == null) {
@@ -51,7 +51,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
+    public ResponseEntity<Void> deleteUser(@PathVariable("id") Integer id) {
         userService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
@@ -61,10 +61,10 @@ public class UserController {
      */
     @GetMapping("/search")
     public List<User> searchUsers(
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) String email,
-            @RequestParam(required = false) Integer status,
-            @RequestParam(required = false) Integer deptId) {
+            @RequestParam(required = false, value = "name") String name,
+            @RequestParam(required = false, value = "email") String email,
+            @RequestParam(required = false, value = "status") Integer status,
+            @RequestParam(required = false, value = "deptId") Integer deptId) {
         return userService.search(name, email, status, deptId);
     }
 
@@ -80,9 +80,9 @@ public class UserController {
      * 测试事务回滚
      */
     @PostMapping("/transfer")
-    public String transferDept(@RequestParam Integer userId,
-                               @RequestParam Integer newDeptId,
-                               @RequestParam(defaultValue = "false") boolean simulateError) {
+    public String transferDept(@RequestParam("userId") Integer userId,
+                               @RequestParam("newDeptId") Integer newDeptId,
+                               @RequestParam(value = "simulateError", defaultValue = "false") boolean simulateError) {
         if (simulateError) {
             newDeptId = 999;  // 触发异常
         }

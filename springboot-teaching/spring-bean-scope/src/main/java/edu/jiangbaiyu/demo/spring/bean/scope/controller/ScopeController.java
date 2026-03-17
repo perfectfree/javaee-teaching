@@ -18,12 +18,17 @@ public class ScopeController {
     @Autowired
     private SingletonBean singletonBean;      // 单例 Bean（同一个实例）
 
+
+    @Autowired
+    private PrototypeBean prototypeBean; // 原型 Bean （每次都是新实例）
+
     // 原型 Bean 的注入需要特殊处理，这里演示通过 ApplicationContext 获取
     @Autowired
     private org.springframework.context.ApplicationContext context;
 
     @Autowired
     private LifecycleBean lifecycleBean;       // 测试生命周期回调
+
 
     /**
      * 测试单例 Bean：多次访问，count 累加，hashCode 不变
@@ -38,7 +43,7 @@ public class ScopeController {
      */
     @GetMapping("/scope/prototype")
     public String testPrototype() {
-        PrototypeBean prototypeBean = context.getBean(PrototypeBean.class);
+//        PrototypeBean prototypeBean = context.getBean(PrototypeBean.class);
         return "Prototype: " + prototypeBean.incrementAndGet() + " - " + prototypeBean.getInfo();
     }
 

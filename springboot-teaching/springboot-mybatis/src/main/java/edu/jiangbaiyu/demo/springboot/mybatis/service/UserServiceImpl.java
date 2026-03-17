@@ -69,9 +69,11 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             throw new RuntimeException("用户不存在");
         }
+// 模拟后续操作异常（例如远程调用失败）
+        if (newDeptId == 999)
+            // 更新部门
+            user.setDeptId(3);
 
-        // 更新部门
-        user.setDeptId(newDeptId);
         userMapper.update(user);
 
         // 模拟后续操作异常（例如远程调用失败）

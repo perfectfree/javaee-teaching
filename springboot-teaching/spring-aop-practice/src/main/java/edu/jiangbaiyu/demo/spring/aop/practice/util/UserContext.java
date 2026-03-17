@@ -10,6 +10,7 @@ public class UserContext {
 
     public static void setCurrentRole(String role) {
         currentRole.set(role);
+        System.out.println("当前UserContext中的用户角色已设置为："+role);
     }
 
     public static String getCurrentRole() {

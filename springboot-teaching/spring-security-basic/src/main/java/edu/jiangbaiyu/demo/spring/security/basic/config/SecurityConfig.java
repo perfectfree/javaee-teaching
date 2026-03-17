@@ -59,7 +59,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated()                   // 其他都需要认证
                 )
                 .formLogin(form -> form
-                        .loginPage("/login")                             // 默认登录页（由Spring Security提供）
+//                        .loginPage("/login")                             // 默认登录页（由Spring Security提供）
                         .permitAll()
                 )
                 .logout(logout -> logout

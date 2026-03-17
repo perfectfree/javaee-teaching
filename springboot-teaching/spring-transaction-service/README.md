@@ -1,6 +1,6 @@
 ### 验证与运行
 
-- 启动`TransactionServiceApplication`，访问`http://localhost:8080/h2-console`可查看H2控制台（JDBC URL: `jdbc:h2:mem:transactiondb`）。
+- 启动`App`
 - 使用Postman测试各个接口：
   - POST `/users/with-log`：正常插入用户和日志。
   - POST `/users/with-log-error`：用户插入后日志抛出异常，用户表应无数据（回滚）。

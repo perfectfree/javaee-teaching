@@ -52,7 +52,7 @@ public class UserController {
 
     // ========== 额外演示：不指定Qualifier会报错（多个实现）==========
     // 如果想演示歧义，可以取消下面代码的注释，但需要注释掉一个实现类上的@Service
-    /*
+/*
     @Autowired
     private UserService ambiguousService;  // 启动会报错，因为有两个匹配的bean
 
@@ -60,5 +60,5 @@ public class UserController {
     public String getAmbiguous() {
         return ambiguousService.getUserInfo();
     }
-    */
+*/
 }

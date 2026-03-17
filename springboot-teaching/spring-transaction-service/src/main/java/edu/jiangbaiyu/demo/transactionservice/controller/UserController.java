@@ -57,7 +57,7 @@ public class UserController {
      * 查询用户（只读事务）
      */
     @GetMapping("/{id}")
-    public Result<User> getById(@PathVariable Long id) {
+    public Result<User> getById(@PathVariable("id") Long id) {
         User user = userService.getUserById(id);
         if (user == null) {
             throw new BusinessException(404, "用户不存在");

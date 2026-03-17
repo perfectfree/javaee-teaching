@@ -21,8 +21,11 @@
     <servlet-api.version>4.0.1</servlet-api.version>
     <spring-boot.version>3.3.4</spring-boot.version>
     <springdoc.version>2.5.0</springdoc.version>
+    <lombok.version>1.18.36</lombok.version>
     <mybatis-spring-boot-starter.version>3.0.3</mybatis-spring-boot-starter.version>
-    <mybatis-plus.version>3.5.7</mybatis-plus.version>
+    <mybatis-plus.version>3.5.10</mybatis-plus.version>
+    <mybatis-plus-jsqlparser.version>3.5.13</mybatis-plus-jsqlparser.version>
+    <mybatis-spring.version>3.0.3</mybatis-spring.version>
     <spring-boot-starter-thymeleaf.version>4.0.3</spring-boot-starter-thymeleaf.version>
   </properties>
 
@@ -103,11 +106,27 @@
         <artifactId>mybatis-plus-extension</artifactId>
         <version>${mybatis-plus.version}</version>
       </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-jsqlparser</artifactId>
+        <version>${mybatis-plus-jsqlparser.version}</version>  <!-- 版本与 mybatis-plus 保持一致 -->
+      </dependency>
+      <!-- 👇 显式覆盖 mybatis-spring 版本 -->
+      <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-spring</artifactId>
+        <version>${mybatis-spring.version}</version>
+      </dependency>
       <!-- SpringDoc OpenAPI -->
       <dependency>
         <groupId>org.springdoc</groupId>
         <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
         <version>${springdoc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
       </dependency>
     </dependencies>
 

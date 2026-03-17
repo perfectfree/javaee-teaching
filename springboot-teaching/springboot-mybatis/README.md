@@ -1,7 +1,7 @@
 #### **运行说明**
 
 1. **准备数据库**：在MySQL中创建数据库 `javaee_teaching`（如果尚未创建），并确保用户名密码与 `application.yml` 中一致。
-2. **启动应用**：运行 `SpringbootMybatisApplication` 的 main 方法，观察控制台日志，schema.sql 会自动执行初始化。
+2. **启动应用**：运行 `App` 的 main 方法，观察控制台日志，schema.sql 会自动执行初始化。
 3. **测试接口**（可使用 Postman 或浏览器）：
    - GET `http://localhost:8087/users` 获取所有用户
    - GET `http://localhost:8087/users/1` 获取ID为1的用户

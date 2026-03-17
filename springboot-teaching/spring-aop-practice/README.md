@@ -1,6 +1,6 @@
 #### **运行说明**
 
-1. 启动应用 `SpringAopPracticeApplication`。
+1. 启动应用 `App`。
 
 2. 使用 Postman 或浏览器按以下顺序测试：
 
