@@ -1,0 +1,40 @@
+server:
+  port: 8811
+spring:
+  application:
+    name: department-service
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/ms_department?characterEncoding=utf-8&useSSL=FALSE&allowPublicKeyRetrieval=true
+    username: test
+    password: 123456  # 请根据实际修改
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    # Nacos配置
+    nacos:
+      server-addr: 127.0.0.1:8848
+      discovery:
+        enabled: true
+      config:
+        namespace: ${spring.profiles.active:public}
+        enabled: false
+        auto-refresh: true
+        enable-remote-sync-config: true
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+
+---
+spring:
+    activate:
+      on-profile: dev
+

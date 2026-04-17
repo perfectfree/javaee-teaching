@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS ms_order;
+USE ms_order;
+
+CREATE TABLE IF NOT EXISTS `order` (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    product VARCHAR(100),
+    amount DECIMAL(10,2),
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP
+);

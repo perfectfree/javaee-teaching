@@ -1,0 +1,45 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>edu.jiangbaiyu</groupId>
+        <artifactId>springcloud-teaching</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>cloud-gateway</artifactId>
+    <packaging>jar</packaging>
+
+    <name>cloud-gateway</name>
+    <dependencies>
+        <dependency>
+            <groupId>edu.jiangbaiyu</groupId>
+            <artifactId>cloud-common</artifactId>
+            <version>1.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- Gateway 依赖，排除web starter -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
+        </dependency>
+
+        <!-- RequestRateLimiter 是 Spring Cloud Gateway 内置的一个 限流过滤器，用于对经过网关的请求进行流量控制，防止突发流量压垮后端服务。它的实现基于 令牌桶算法，并借助 Redis 进行分布式计数 -->
+        <!-- 可选，因为已经有sentinel -->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>-->
+<!--        </dependency>-->
+
+    </dependencies>
+</project>

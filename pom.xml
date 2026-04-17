@@ -6,7 +6,7 @@
   <artifactId>javaee-teaching</artifactId>
   <version>1.0</version>
   <packaging>pom</packaging>
-
+<!-- mvn install -N -tskipTests -->
   <properties>
     <maven.compiler.source>19</maven.compiler.source>
     <maven.compiler.target>19</maven.compiler.target>
@@ -23,10 +23,18 @@
     <springdoc.version>2.5.0</springdoc.version>
     <lombok.version>1.18.36</lombok.version>
     <mybatis-spring-boot-starter.version>3.0.3</mybatis-spring-boot-starter.version>
+    <druid.version>1.2.24</druid.version>
     <mybatis-plus.version>3.5.10</mybatis-plus.version>
     <mybatis-plus-jsqlparser.version>3.5.13</mybatis-plus-jsqlparser.version>
     <mybatis-spring.version>3.0.3</mybatis-spring.version>
     <spring-boot-starter-thymeleaf.version>4.0.3</spring-boot-starter-thymeleaf.version>
+    <spring-cloud.version>2023.0.3</spring-cloud.version>
+    <spring-cloud-alibaba.version>2023.0.3.2</spring-cloud-alibaba.version>
+    <sentinel.version>2023.0.3.2</sentinel.version>
+    <sentinel-gateway.version>2023.0.3.2</sentinel-gateway.version>
+    <jjwt-api.version>0.11.5</jjwt-api.version>
+    <jjwt-impl.version>0.11.5</jjwt-impl.version>
+    <jjwt-jackson.version>0.11.5</jjwt-jackson.version>
   </properties>
 
   <dependencyManagement>
@@ -95,6 +103,56 @@
         <artifactId>spring-boot-starter-thymeleaf</artifactId>
         <version>${spring-boot-starter-thymeleaf.version}</version>
       </dependency>
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid-spring-boot-3-starter</artifactId>
+        <version>${druid.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- Spring Cloud Alibaba -->
+      <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>${spring-cloud-alibaba.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- Sentinel -->
+      <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        <version>${sentinel.version}</version>
+      </dependency>
+      <!-- Sentinel Gateway Adapter -->
+      <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
+        <version>${sentinel-gateway.version}</version>
+      </dependency>
+      <!-- JJWT -->
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-api</artifactId>
+        <version>${jjwt-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-impl</artifactId>
+        <version>${jjwt-impl.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-jackson</artifactId>
+        <version>${jjwt-jackson.version}</version>
+        <scope>runtime</scope>
+      </dependency>
       <!-- MyBatis-Plus -->
       <dependency>
         <groupId>com.baomidou</groupId>
@@ -128,6 +186,7 @@
         <artifactId>lombok</artifactId>
         <version>${lombok.version}</version>
       </dependency>
+
     </dependencies>
 
   </dependencyManagement>
@@ -136,8 +195,8 @@
     <module>maven-teaching</module>
     <module>mybatis-teaching</module>
     <module>springboot-teaching</module>
-    <module>springboot-teaching/spring-security-basic</module>
-      <module>springboot-teaching/spring-thymeleaf-basic</module>
+    <module>springcloud-teaching</module>
+    <module>springcloud-teaching/cloud-common</module>
   </modules>
 
   <build>

@@ -37,22 +37,44 @@
     <file url="file://$PROJECT_DIR$/springboot-teaching/spring-thymeleaf-basic/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/spring-thymeleaf-practice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/spring-thymeleaf-practice/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-teaching/spring-transaction-service/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-teaching/spring-transaction-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-basic/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-basic/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-mybatis/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-mybatis/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-mybatisplus-advanced/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-mybatisplus-advanced/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-mybatisplus-basic/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-mybatisplus-basic/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-mybatisplus/mybatisplus-generator/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-mybatisplus/mybatisplus-generator/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-mybatisplus/spring-transaction-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-mybatisplus/spring-transaction-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-mybatisplus/springboot-mybatisplus-advanced/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-mybatisplus/springboot-mybatisplus-advanced/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-mybatisplus/springboot-mybatisplus-basic/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-mybatisplus/springboot-mybatisplus-basic/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-mybatisplus/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-mybatisplus/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-restful/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-restful/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-parent/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-parent/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-teaching/cloud-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-teaching/cloud-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-teaching/cloud-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-teaching/cloud-gateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-teaching/services/auth-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-teaching/services/auth-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-teaching/services/department-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-teaching/services/department-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-teaching/services/order-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-teaching/services/order-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-teaching/services/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-teaching/services/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-teaching/services/user-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-teaching/services/user-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-teaching/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud-teaching/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

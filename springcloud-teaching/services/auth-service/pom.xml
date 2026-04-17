@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>edu.jiangbaiyu</groupId>
+        <artifactId>services</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>auth-service</artifactId>
+    <packaging>jar</packaging>
+
+    <name>auth-service</name>
+    <dependencies>
+        <!-- OpenFeign -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!--
+        在 Spring Cloud 2020.x 版本之后，Netflix Ribbon 被移出，
+        官方推荐使用 Spring Cloud LoadBalancer 作为负载均衡组件。
+        当使用 @FeignClient 时，Feign 需要负载均衡来解析服务名（如 user-service）并找到实际的服务实例。
+        -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
+    </dependencies>
+</project>
