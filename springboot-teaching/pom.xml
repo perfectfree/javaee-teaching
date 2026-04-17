@@ -19,16 +19,29 @@
         <module>spring-aop-practice</module>
         <module>spring-aop-basic</module>
         <module>springboot-mybatis</module>
-
+        <module>springboot-mybatisplus</module>
         <module>springboot-core</module>
         <module>springboot-restful</module>
-        <module>springboot-mybatisplus-basic</module>
-        <module>springboot-mybatisplus-advanced</module>
-        <module>spring-transaction-service</module>
+        <module>spring-security-basic</module>
         <module>spring-security-advanced</module>
+        <module>spring-thymeleaf-basic</module>
         <module>spring-thymeleaf-practice</module>
     </modules>
-
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>

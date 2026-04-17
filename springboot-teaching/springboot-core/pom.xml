@@ -12,10 +12,6 @@
 
     <name>springboot-core</name>
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
         <!-- 调试时查看自动配置报告 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

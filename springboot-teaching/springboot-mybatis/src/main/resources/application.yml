@@ -3,14 +3,55 @@ server:
 
 spring:
   datasource:
+    #数据库连接池推荐：阿里的Druid（还可选择：C3P0、DBCP）
+    type: com.alibaba.druid.pool.DruidDataSource
+    #druid自动从url的jdbc:mysql来识别加载什么类型的driver-class
+    #driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/test?characterEncoding=utf-8&useSSL=FALSE&allowPublicKeyRetrieval=true
     username: test
     password: 123456  # 请根据实际修改
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    #druid相关配置
+    druid:
+      #连接池最大连接数
+      max-active: 20
+      #初始化连接数
+      initial-size: 5
+      #最小空闲连接数
+      min-idle: 5
+      #连接保持空闲而不被驱逐的最小时间（连接的最小生存时间）
+      min-evictable-idle-time-millis: 300000
+      #获取连接时最大的等待时间
+      max-wait: 60000
+      #用来检测连接是否有效的sql设定
+      validation-query: select 1 from dual
+      #申请连接时是否需要先进行连接有效性的检测，开启会降低
+      test-on-borrow: false
+      #归还连接时是否需要先进行连接有效性的检测，开启会降低
+      test-on-return: false
+      #连接空闲时是否需要先进行连接有效性的检测
+      test-while-idle: true
+      #连接有效性检测的时间间隔(配置间隔多久才进行一次检测，检测需要关闭的空闲连接)
+      time-between-eviction-runs-millis: 60000
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: admin
+      web-stat-filter:
+        enabled: true
+      # 启用 Filter
+      filter:
+        stat:
+          enabled: true
+          log-slow-sql: true
+          slow-sql-millis: 2000
+        wall:
+          enabled: true
   sql:
     init:
       mode: always   # 每次启动执行 schema.sql
       schema-locations: classpath:schema.sql
+
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml

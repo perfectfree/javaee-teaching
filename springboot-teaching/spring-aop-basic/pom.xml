@@ -12,10 +12,6 @@
 
     <name>spring-aop-basic</name>
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
         <!-- AOP 起步依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
