@@ -1,0 +1,25 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: '*'
+            allowedMethods: "*"
+      routes:
+        - id: department-route
+          uri: lb://department-service
+          predicates:
+            - Path=/departments/**
+        - id: user-route
+          uri: lb://user-service
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - StripPrefix=1
+        - id: auth-route
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+

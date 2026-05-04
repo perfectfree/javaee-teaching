@@ -6,7 +6,16 @@
   <artifactId>javaee-teaching</artifactId>
   <version>1.0</version>
   <packaging>pom</packaging>
-<!-- mvn install -N -tskipTests -->
+
+  <modules>
+    <module>maven-teaching</module>
+    <module>mybatis-teaching</module>
+    <module>springboot-teaching</module>
+    <module>springcloud-teaching</module>
+    <module>springcloud-teaching/cloud-common</module>
+    <module>springboot-teaching/springboot-config</module>
+  </modules>
+
   <properties>
     <maven.compiler.source>19</maven.compiler.source>
     <maven.compiler.target>19</maven.compiler.target>
@@ -190,25 +199,5 @@
     </dependencies>
 
   </dependencyManagement>
-
-  <modules>
-    <module>maven-teaching</module>
-    <module>mybatis-teaching</module>
-    <module>springboot-teaching</module>
-    <module>springcloud-teaching</module>
-    <module>springcloud-teaching/cloud-common</module>
-  </modules>
-
-  <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-maven-plugin</artifactId>
-          <version>${spring-boot.version}</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
 
 </project>

@@ -19,15 +19,13 @@
     </modules>
 
     <dependencies>
+
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>edu.jiangbaiyu</groupId>
+            <artifactId>cloud-common</artifactId>
+            <version>1.0</version>
         </dependency>
-        <!-- 限流支持 -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>

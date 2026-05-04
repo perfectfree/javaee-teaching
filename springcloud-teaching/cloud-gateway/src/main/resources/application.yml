@@ -4,45 +4,43 @@ spring:
   application:
     name: gateway-service
   config:
-    import: optional:nacos
-
+    import: optional:nacos,classpath:application-route.yml
   cloud:
     nacos:
-      discovery:
         server-addr: 127.0.0.1:8848
-      config:
-        import-check:
-          enabled: false
+        config:
+          import-check:
+            enabled: false
     sentinel:
       transport:
         dashboard: localhost:8080
       filter:
         enabled: true
-
+      eager: true
+      scg:
+        fallback:
+          mode: response            # 限流后直接返回响应，可选 redirect
+          response-status: 419      # 限流响应状态码
+          response-body: '{"code":419,"msg":"请求过于频繁，请稍后重试"}'
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true              # 自动从 Nacos 创建路由
+management:
+  endpoints:
+    web:
+      exposure:
+        include: gateway
+  endpoint:
     gateway:
-      routes:
-        - id: department-route
-          uri: lb://department-service
-          predicates:
-            - Path=/departments/**
-        - id: user-route
-          uri: lb://user-service
-          predicates:
-            - Path=/users/**
-        - id: order-route
-          uri: lb://order-service
-          predicates:
-            - Path=/orders/**
-        - id: auth-route
-          uri: lb://auth-service
-          predicates:
-            - Path=/auth/**
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: "*"
-            allowedMethods: "*"
-      # 自定义限流返回（可选）
+      enabled: true
+
+#logging:
+#  level:
+#    org.springframework.cloud.gateway: DEBUG
+#    org.springframework.web: DEBUG
+
+    # 自定义限流返回（可选）
 #      default-filters:
 #        - name: RequestRateLimiter
 #          args:
@@ -57,3 +55,5 @@ custom-gateway:
       - /auth/register
       - /swagger-ui/**
       - /v3/api-docs/**
+      - /user-service/**
+      - /api/**

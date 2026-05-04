@@ -19,6 +19,8 @@
     <file url="file://$PROJECT_DIR$/mybatis-teaching/mybatis-quickstart/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mybatis-teaching/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mybatis-teaching/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parent/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parent/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/spring-aop-basic/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/spring-aop-basic/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/spring-aop-practice/src/main/java" charset="UTF-8" />
@@ -39,6 +41,8 @@
     <file url="file://$PROJECT_DIR$/springboot-teaching/spring-thymeleaf-practice/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-basic/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-basic/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-config/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-config/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-teaching/springboot-mybatis/src/main/java" charset="UTF-8" />

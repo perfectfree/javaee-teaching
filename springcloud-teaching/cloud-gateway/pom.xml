@@ -21,6 +21,14 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-web</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-validation</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.security</groupId>
+                    <artifactId>spring-security-crypto</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <!-- Gateway 依赖，排除web starter -->
@@ -34,12 +42,32 @@
             <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
         </dependency>
 
-        <!-- RequestRateLimiter 是 Spring Cloud Gateway 内置的一个 限流过滤器，用于对经过网关的请求进行流量控制，防止突发流量压垮后端服务。它的实现基于 令牌桶算法，并借助 Redis 进行分布式计数 -->
-        <!-- 可选，因为已经有sentinel -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>-->
-<!--        </dependency>-->
+        <!--
+        搭配spring-cloud-alibaba-sentinel-gateway
+        sentinel-datasource-extension 是 Sentinel 提供的动态数据源扩展模块，它的核心作用是从外部配置中心（如 Nacos、Apollo、ZooKeeper）或本地文件等动态获取限流、熔断规则，并实时刷新到应用中，实现规则的热更新
+        -->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-extension</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
+
 </project>

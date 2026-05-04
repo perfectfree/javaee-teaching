@@ -1,0 +1,18 @@
+# 自定义配置文件（YAML格式），与properties内容互补
+error-yml:
+  codes:
+    401: UNAUTHORIZED
+    403: FORBIDDEN
+  messages:
+    401: 未授权，请先登录
+    403: 禁止访问
+  # List 示例
+  retryable-exceptions:
+    - SQLException
+    - TimeoutException
+    - IOException
+  # Map 示例
+  severity:
+    404: WARN
+    500: ERROR
+    401: INFO

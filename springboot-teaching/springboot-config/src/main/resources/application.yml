@@ -1,0 +1,36 @@
+# 默认配置文件（YAML格式）
+server:
+  port: 8080
+
+spring:
+  config:
+    import:
+      - 'classpath:config/error-codes.yml'
+
+# 通用配置（无论激活哪个profile都会加载）
+app:
+  name: "Spring Boot 配置演示"
+  version: "1.0.0"
+  description: "演示读取YAML和Properties配置"
+
+# 复杂结构示例：List和Map
+list:
+  colors:
+    - red
+    - green
+    - blue
+
+map:
+  settings:
+    key1: value1
+    key2: value2
+    key3: value3
+
+# 嵌套对象示例
+nested:
+  database:
+    host: localhost
+    port: 3306
+    credentials:
+      username: root
+      password: secret

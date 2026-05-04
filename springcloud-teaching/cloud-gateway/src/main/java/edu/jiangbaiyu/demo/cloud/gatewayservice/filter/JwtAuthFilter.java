@@ -1,9 +1,10 @@
 package edu.jiangbaiyu.demo.cloud.gatewayservice.filter;
 
+
 import edu.jiangbaiyu.demo.cloud.common.utils.JwtUtil;
+import edu.jiangbaiyu.demo.cloud.gatewayservice.config.URLWhitelistProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -13,8 +14,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-
-import java.util.List;
 
 /**
  * JWT 鉴权全局过滤器
@@ -36,8 +35,8 @@ public class JwtAuthFilter implements GlobalFilter, Ordered {
      * 配置项名称：custom-gateway.whitelist.paths
      * 示例：custom-gateway.whitelist.paths=/auth/login,/auth/register,/public/**
      */
-    @Value("${custom-gateway.whitelist.paths:}")
-    private List<String> whitelist;
+    @Autowired
+    private URLWhitelistProperties whitelistProperties;
 
     /**
      * Ant 风格的路径匹配器，用于判断请求路径是否匹配白名单中的模式
@@ -105,7 +104,7 @@ public class JwtAuthFilter implements GlobalFilter, Ordered {
      */
     private boolean isWhitelisted(String path) {
         // 使用 Stream API 遍历白名单，只要有一个模式匹配就返回 true
-        return whitelist.stream().anyMatch(pattern -> pathMatcher.match(pattern, path));
+        return whitelistProperties.getPaths().stream().anyMatch(pattern -> pathMatcher.match(pattern, path));
     }
 
     /**

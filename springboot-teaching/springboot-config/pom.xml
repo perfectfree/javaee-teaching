@@ -6,16 +6,17 @@
         <artifactId>springboot-teaching</artifactId>
         <version>1.0</version>
     </parent>
-
-    <artifactId>spring-security-basic</artifactId>
+    <artifactId>springboot-config</artifactId>
     <packaging>jar</packaging>
 
-    <name>spring-security-basic</name>
+    <name>springboot-config</name>
+
     <dependencies>
+        <!-- 用于读取自定义配置文件时自动提示，非必须 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
-
 </project>

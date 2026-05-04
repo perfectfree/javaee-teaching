@@ -12,24 +12,4 @@
 
     <name>user-service</name>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <!--Nacos 2.x 官方支持 JDK 8 和 JDK 11，在 JDK 17+ 上虽然可运行，但需要额外配置。-->
-                    <jvmArguments>
-                        --add-opens java.base/java.io=ALL-UNNAMED
-                        --add-opens java.base/java.lang=ALL-UNNAMED
-                        --add-opens java.base/java.util=ALL-UNNAMED
-                        --add-opens java.base/java.util.concurrent=ALL-UNNAMED
-                        --add-opens java.base/java.util.concurrent.atomic=ALL-UNNAMED
-                        --add-opens java.base/sun.nio.ch=ALL-UNNAMED
-                        --add-opens java.base/sun.net.util=ALL-UNNAMED
-                    </jvmArguments>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
